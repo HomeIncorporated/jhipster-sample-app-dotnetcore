@@ -1,0 +1,6 @@
+version: '2'
+services:
+  jhipstersampleapplication-app:
+    image: jhipstersampleapplication
+    ports:
+      - 80:80
