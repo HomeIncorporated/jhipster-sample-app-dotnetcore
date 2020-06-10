@@ -16,6 +16,16 @@ namespace MyCompany.Data {
         {
         }
 
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<PieceOfWork> PieceOfWorks { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<JobChore> JobChores { get; set; }
+        public DbSet<JobHistory> JobHistories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -39,6 +49,9 @@ namespace MyCompany.Data {
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<JobChore>()
+                .HasKey(t => new { t.JobId, t.PieceOfWorkId });
+
         }
     }
 }
